@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Shop{% endblock %}</title>
+    <!-- Add your CSS and JavaScript includes here -->
+</head>
+
+<body>
+    <h5>Login_details</h5>
+    <p>username: admin</p>
+    <p>password: sujan123</p>
+    <p><a href="/admin">access Database</a></p>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/">About</a></li>
+            {% if user.is_authenticated %}
+            <li>Hello, {{ user.username }}</li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'user_login' %}">Login</a></li>
+            {% endif %}
+            <!-- Add other navigation links here -->
+        </ul>
+    </nav>
+
+    <!-- Content Area -->
+    <div class="content">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 My Shop</p>
+    </footer>
+
+    <!-- Add your JavaScript includes here -->
+
+</body>
+
+</html>
