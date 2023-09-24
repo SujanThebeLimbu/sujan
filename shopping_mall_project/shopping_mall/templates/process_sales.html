@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Process Sales</title>
+</head>
+
+<body>
+    <h1>Process Sales</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ sale_form.as_p }}
+        <button type="submit">Process Sale</button>
+    </form>
+</body>
+
+</html>

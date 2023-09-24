@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container">
+    Hello
+    {% if user.is_authenticated %}
+    {% if user.username == "admin" and user.username == 'manager' %}
+
+    <h1>Welcome, Admin!</h1>
+    <button><a href="/admin">Access Database</a></button>
+    <h1>Manage Inventory</h1>
+    <ul>
+        <li><a href="{% url 'manage_inventory' %}">Database</a></li>
+    </ul>
+
+    <h1>Manage Stores</h1>
+    <ul>
+        {% for store in stores %}
+        <li>{{ store.name }} - {{ store.location }}</li>
+        {% endfor %}
+    </ul>
+
+    <h1>Manage Employee</h1>
+    <ul>
+        {% for employee in users %}
+        <li>{{ employee.name }}</li>
+        {% endfor %}
+    </ul>
+
+
+
+    {% endif %}
+    {% else %}
+
+    <ul>
+        {% for product in products %}
+        <li>
+            {{ product.name }} - Stock: {{ product.stock_level }} - Price: ${{ product.price }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+</div>
+{% endblock %}
